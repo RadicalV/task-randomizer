@@ -34,6 +34,16 @@ const MainPage = () => {
       >
         Lottery Draw List
       </Button>
+      <Button
+        size="lg"
+        variant="solid"
+        color="warning"
+        onClick={() => {
+          navigate("/login");
+        }}
+      >
+        Lottery Draw List
+      </Button>
     </Box>
   );
 };
