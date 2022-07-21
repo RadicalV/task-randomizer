@@ -1,4 +1,4 @@
-import { Button } from "@mui/joy";
+import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 
@@ -15,9 +15,10 @@ const MainPage = () => {
       }}
     >
       <Button
-        size="lg"
-        variant="solid"
-        color="danger"
+        sx={{ fontWeight: "bold" }}
+        variant="contained"
+        color="error"
+        size="large"
         onClick={() => {
           navigate("/list/bad");
         }}
@@ -25,21 +26,12 @@ const MainPage = () => {
         Punishment Draw List
       </Button>
       <Button
-        size="lg"
-        variant="solid"
+        sx={{ fontWeight: "bold" }}
+        variant="contained"
         color="success"
+        size="large"
         onClick={() => {
           navigate("/list/good");
-        }}
-      >
-        Lottery Draw List
-      </Button>
-      <Button
-        size="lg"
-        variant="solid"
-        color="warning"
-        onClick={() => {
-          navigate("/login");
         }}
       >
         Lottery Draw List

@@ -1,4 +1,3 @@
-import { CssVarsProvider } from "@mui/joy";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -11,9 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CssVarsProvider>
-        <App />
-      </CssVarsProvider>
+      <App />
     </Provider>
   </React.StrictMode>
 );
