@@ -1,8 +1,12 @@
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../store/store";
 
 const MainPage = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
+
   const navigate = useNavigate();
   return (
     <Box
@@ -36,6 +40,21 @@ const MainPage = () => {
       >
         Lottery Draw List
       </Button>
+      {user.role === "Administrator" ? (
+        <Button
+          sx={{ fontWeight: "bold" }}
+          variant="contained"
+          color="success"
+          size="large"
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          DASHBOARD
+        </Button>
+      ) : (
+        <></>
+      )}
     </Box>
   );
 };

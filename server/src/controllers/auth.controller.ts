@@ -12,7 +12,6 @@ export const login = async (
 
     res.status(200).send({ token });
   } catch (error) {
-    res.status(500).send({ error });
-    console.log(error);
+    next(error);
   }
 };

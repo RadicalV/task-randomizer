@@ -1,3 +1,4 @@
+import { HttpException } from "@utils/httpException";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../constants";
 import { User } from "@models/user";
@@ -10,7 +11,7 @@ const login = async (data: string) => {
   }
 
   const isUsernameMatching = data === user.username;
-  if (!isUsernameMatching) console.log("Failed to login");
+  if (!isUsernameMatching) throw new HttpException(400, "Failed to login");
 
   const token = await signToken(user._id);
 
@@ -20,7 +21,7 @@ const login = async (data: string) => {
 const signToken = (id: string) => {
   return new Promise((resolve, reject) => {
     jwt.sign({ id }, JWT_SECRET, { expiresIn: "7d" }, (err, token) => {
-      if (err) reject(console.log("Error signing token"));
+      if (err) reject(new HttpException(500, "Error signing token"));
 
       resolve(token);
     });
@@ -32,7 +33,7 @@ const verifyToken = (token: string) => {
     const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
     return decoded;
   } catch (err) {
-    console.log("Invalid token");
+    throw new HttpException(401, "Invalid token");
   }
 };
 

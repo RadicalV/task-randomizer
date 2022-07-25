@@ -1,9 +1,4 @@
-import { Document, model, Model, Schema } from "mongoose";
-
-export interface IUser extends Document {
-  username: string;
-  role: ["User", "Administrator"];
-}
+import { Document, model, Model, Schema, InferSchemaType } from "mongoose";
 
 const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
@@ -15,4 +10,6 @@ const UserSchema = new Schema({
   },
 });
 
-export const User = model<IUser>("User", UserSchema);
+export type IUser = InferSchemaType<typeof UserSchema>;
+
+export const User = model("User", UserSchema);
