@@ -1,4 +1,4 @@
-import { Team } from "../models/team";
+import { ITeam, Team } from "../models/team";
 import { HttpException } from "../utils/httpException";
 
 const getTeams = async () => {
@@ -17,9 +17,20 @@ const createTeam = async (data: {}) => {
   return team;
 };
 
-const updateTeam = async (id: string, data: {}) => {
-  //Fix so you can push/replace users in team array
-  let team = await Team.findByIdAndUpdate(id, data, { new: true });
+const updateTeam = async (id: string, data: ITeam) => {
+  //Add check if less 2 in array do this
+  //Else change user id based on given id
+  //Also add checks so color ant name can't be ""
+
+  let team = await Team.updateOne(
+    {
+      _id: id,
+    },
+    {
+      $addToSet: { users: data.users },
+      $set: { name: data.name, color: data.color },
+    }
+  );
 
   if (!team) throw new HttpException(400, "Failed to retrieve team");
 
