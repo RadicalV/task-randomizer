@@ -19,11 +19,8 @@ const Login = () => {
         onSubmit={async () => {
           try {
             const tokenData = (await authService.login(username)).data;
-            console.log(tokenData.token);
             const user = (await userService.getCurrentUserData(tokenData.token))
               .data;
-
-            console.log(user);
             dispatch(
               setCredentials({
                 user: { username: user.username, role: user.role },
