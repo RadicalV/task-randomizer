@@ -21,7 +21,7 @@ const login = async (data: string) => {
 const signToken = (id: string) => {
   return new Promise((resolve, reject) => {
     jwt.sign({ id }, JWT_SECRET, { expiresIn: "7d" }, (err, token) => {
-      if (err) reject(new HttpException(500, "Error signing token"));
+      if (err) reject(new HttpException(500, "Internal server error"));
 
       resolve(token);
     });
@@ -33,7 +33,7 @@ const verifyToken = (token: string) => {
     const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
     return decoded;
   } catch (err) {
-    throw new HttpException(401, "Invalid token");
+    throw new HttpException(401, "Unauthorized");
   }
 };
 

@@ -9,6 +9,9 @@ export const getCurrentUserData = async (
   try {
     const user = await userService.getData(req.tokenData);
 
+    console.log(req.tokenData);
+    console.log(user);
+
     res.status(200).send(user);
   } catch (error) {
     next(error);

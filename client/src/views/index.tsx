@@ -40,7 +40,7 @@ const MainPage = () => {
       >
         Lottery Draw List
       </Button>
-      {user.role === "Administrator" ? (
+      {user.role === "Administrator" && (
         <Button
           sx={{ fontWeight: "bold" }}
           variant="contained"
@@ -52,8 +52,6 @@ const MainPage = () => {
         >
           DASHBOARD
         </Button>
-      ) : (
-        <></>
       )}
     </Box>
   );

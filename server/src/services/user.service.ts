@@ -2,7 +2,7 @@ import { HttpException } from "@utils/httpException";
 import { User } from "../models/user";
 
 const getData = async (id: string) => {
-  let user = await User.findOne({ id });
+  let user = await User.findOne({ _id: id });
 
   if (!user) throw new HttpException(400, "Failed to retrieve user");
 
