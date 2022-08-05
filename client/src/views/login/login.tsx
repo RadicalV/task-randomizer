@@ -5,6 +5,7 @@ import { setCredentials } from "@store/authSlice";
 import authService from "../../services/authService";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import userService from "../../services/userService";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,14 +18,15 @@ const Login = () => {
         initialValues={{ username: "" }}
         onSubmit={async () => {
           try {
-            authService.login(username).then((res) => {
-              dispatch(
-                setCredentials({
-                  user: username,
-                  accessToken: res.data.token,
-                })
-              );
-            });
+            const tokenData = (await authService.login(username)).data;
+            const user = (await userService.getCurrentUserData(tokenData.token))
+              .data;
+            dispatch(
+              setCredentials({
+                user: { username: user.username, role: user.role },
+                accessToken: tokenData.token,
+              })
+            );
           } catch (err) {
             console.error(err);
           }

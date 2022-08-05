@@ -1,3 +1,5 @@
-import authRoute from './auth.route';
+import authRoute from "./auth.route";
+import userRoute from "./user.route";
+import teamRoute from "./team.route";
 
-export { authRoute};
+export { authRoute, userRoute, teamRoute };

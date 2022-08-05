@@ -22,6 +22,7 @@
       "@models/*": ["models/*"],
       "@routes": ["routes"],
       "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
