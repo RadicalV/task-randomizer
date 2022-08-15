@@ -14,6 +14,19 @@ export const getTeams = async (
   }
 };
 
+export const getTeam = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const team = await teamService.getTeam(req.params.id);
+    res.status(200).send(team);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createTeam = async (
   req: Request,
   res: Response,

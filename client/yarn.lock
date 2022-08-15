@@ -1681,6 +1681,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ebay/nice-modal-react@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "@ebay/nice-modal-react@npm:1.2.6"
+  peerDependencies:
+    react: ">16.8.0"
+    react-dom: ">16.8.0"
+  checksum: 5fc52af6dd5240205553a4285f51a92cbb4b113496ed93a742b7dfbfe6f128c87c6bcc5a7f05779606ec494a4aa3daa568277c8623592f5395b727f537ca8970
+  languageName: node
+  linkType: hard
+
 "@emotion/babel-plugin@npm:^11.7.1":
   version: 11.9.2
   resolution: "@emotion/babel-plugin@npm:11.9.2"
@@ -12030,6 +12040,7 @@ __metadata:
   resolution: "task-randomizer@workspace:."
   dependencies:
     "@craco/craco": ^6.4.5
+    "@ebay/nice-modal-react": ^1.2.6
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
     "@mui/icons-material": ^5.8.4

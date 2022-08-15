@@ -9,6 +9,14 @@ const getTeams = async () => {
   return teams;
 };
 
+const getTeam = async (id: string) => {
+  let team = await Team.findById(id);
+
+  if (!team) throw new HttpException(400, "Failed to retrieve teams");
+
+  return team;
+};
+
 const createTeam = async (data: {}) => {
   let team = await Team.create(data);
 
@@ -18,19 +26,7 @@ const createTeam = async (data: {}) => {
 };
 
 const updateTeam = async (id: string, data: ITeam) => {
-  //Add check if less 2 in array do this
-  //Else change user id based on given id
-  //Also add checks so color ant name can't be ""
-
-  let team = await Team.updateOne(
-    {
-      _id: id,
-    },
-    {
-      $addToSet: { users: data.users },
-      $set: { name: data.name, color: data.color },
-    }
-  );
+  let team = await Team.findByIdAndUpdate(id, data);
 
   if (!team) throw new HttpException(400, "Failed to retrieve team");
 
@@ -45,4 +41,10 @@ const deleteTeam = async (id: string) => {
   return team;
 };
 
-export const teamService = { getTeams, createTeam, updateTeam, deleteTeam };
+export const teamService = {
+  getTeams,
+  getTeam,
+  createTeam,
+  updateTeam,
+  deleteTeam,
+};

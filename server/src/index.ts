@@ -1,7 +1,7 @@
 import expressConfig from "@config/express";
 import mongooseConfig from "@config/mongoose";
 import { NODE_ENV, PORT } from "@constants";
-import { authRoute, teamRoute, userRoute } from "@routes";
+import { authRoute, taskRoute, teamRoute, userRoute } from "@routes";
 import * as http from "http";
 
 process.on("uncaughtException", (err) => {
@@ -18,6 +18,7 @@ const startServer = async () => {
     authRoute.router,
     userRoute.router,
     teamRoute.router,
+    taskRoute.router,
   ]);
   const httpServ = http.createServer(app);
 

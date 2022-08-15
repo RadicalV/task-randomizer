@@ -6,6 +6,7 @@ import store from "./store/store";
 import userService from "./services/userService";
 import { setUser } from "@store/authSlice";
 import axios from "axios";
+import NiceModal from "@ebay/nice-modal-react";
 
 axios.interceptors.request.use(
   (config: any) => {
@@ -36,7 +37,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <NiceModal.Provider>
+        <App />
+      </NiceModal.Provider>
     </Provider>
   </React.StrictMode>
 );

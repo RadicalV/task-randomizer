@@ -98,81 +98,68 @@ const DashboardDrawer = () => {
       </DrawerHeader>
       <Divider />
       <List>
-        <ListItem
-          onClick={() => navigate("users")}
-          disablePadding
-          sx={{ display: "block" }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <PersonIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Users"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          onClick={() => navigate("teams")}
-          disablePadding
-          sx={{ display: "block" }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <GroupsIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Teams"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          onClick={() => navigate("tasks")}
-          disablePadding
-          sx={{ display: "block" }}
-        >
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Tasks"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
+        <Item
+          itemName="Users"
+          open={open}
+          onClick={() => {
+            navigate("users");
+          }}
+          icon={<PersonIcon />}
+        />
+        <Item
+          itemName="Teams"
+          open={open}
+          onClick={() => {
+            navigate("teams");
+          }}
+          icon={<GroupsIcon />}
+        />
+        <Item
+          itemName="Tasks"
+          open={open}
+          onClick={() => {
+            navigate("tasks");
+          }}
+          icon={<AssignmentIcon />}
+        />
       </List>
     </Drawer>
   );
 };
 
+const Item = ({
+  itemName,
+  open,
+  onClick,
+  icon,
+}: {
+  itemName: string;
+  open: boolean;
+  onClick: () => void;
+  icon: React.ReactNode;
+}) => {
+  return (
+    <ListItem onClick={onClick} disablePadding sx={{ display: "block" }}>
+      <ListItemButton
+        sx={{
+          minHeight: 48,
+          justifyContent: open ? "initial" : "center",
+          px: 2.5,
+        }}
+      >
+        <ListItemIcon
+          sx={{
+            minWidth: 0,
+            mr: open ? 3 : "auto",
+            justifyContent: "center",
+          }}
+        >
+          {icon}
+          {/* <AssignmentIcon /> */}
+        </ListItemIcon>
+        <ListItemText primary={itemName} sx={{ opacity: open ? 1 : 0 }} />
+      </ListItemButton>
+    </ListItem>
+  );
+};
 export default DashboardDrawer;

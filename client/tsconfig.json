@@ -23,7 +23,9 @@
     "paths": {
       "@views/*": ["./views/*"],
       "@components/*": ["./components/*"],
-      "@store/*": ["./store/*"]
+      "@store/*": ["./store/*"],
+      "@services/*": ["./services/*"],
+      "@interfaces/*":["./interfaces/*"]
     }
   },
   "include": ["src"]

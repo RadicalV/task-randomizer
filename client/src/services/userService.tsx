@@ -8,7 +8,7 @@ const getCurrentUserData = (token?: string) =>
 const getAllUsers = () => axios.get(`${API_URL}`);
 
 const editUser = (id: string, data: {}) => {
-  axios.put(`${API_URL}/${id}}`, data);
+  axios.put(`${API_URL}/${id}`, data);
 };
 
 const deleteUser = (id: string) => {
@@ -18,6 +18,8 @@ const deleteUser = (id: string) => {
 const userService = {
   getCurrentUserData,
   getAllUsers,
+  editUser,
+  deleteUser,
 };
 
 export default userService;

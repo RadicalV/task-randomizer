@@ -1,4 +1,11 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +19,10 @@ function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          backgroundColor: "#8936b3",
+        }}
       >
         <Toolbar disableGutters>
           <Box
@@ -31,7 +41,7 @@ function Header() {
               href="/"
               sx={{
                 fontFamily: "Arial",
-                fontWeight: 600,
+                fontWeight: 500,
                 color: "inherit",
                 textDecoration: "none",
               }}
@@ -47,9 +57,16 @@ function Header() {
           >
             {user.role === "Administrator" && (
               <Button
-                sx={{ fontWeight: "bold", mr: 5, fontFamily: "Arial" }}
+                sx={{
+                  fontWeight: "bold",
+                  mr: 5,
+                  fontFamily: "Arial",
+                  backgroundColor: "#ff4dff",
+                  "&:hover": {
+                    backgroundColor: "#cc00cc",
+                  },
+                }}
                 variant="contained"
-                color="secondary"
                 size="small"
                 onClick={() => {
                   navigate("/dashboard");
@@ -72,7 +89,11 @@ function Header() {
                 >
                   {user.username}
                 </Typography>
-                <AccountCircle sx={{ mr: 2 }} />
+                <Avatar
+                  sx={{ mr: 2 }}
+                  alt={user.username}
+                  src={`https://avatars.dicebear.com/api/bottts/${user.username}.svg`}
+                />
               </>
             )}
           </Box>
