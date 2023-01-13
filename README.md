@@ -7,3 +7,5 @@ Technologies used:
  - MongoDB
  - Node.js
  - React
+
+Currently on hold
